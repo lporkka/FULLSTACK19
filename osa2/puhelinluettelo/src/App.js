@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+const baseUrl = '/api/persons'
 
 const App = () => {
 	const [persons, setPersons] = useState([])
@@ -27,7 +28,7 @@ const App = () => {
 
 	const hook = () => {
 		console.log('effect')
-		axios.get('http://localhost:3001/persons')
+		axios.get(baseUrl)
 			.then(response => {
 				console.log('lupaus toteutettu')
 				setPersons(response.data)
