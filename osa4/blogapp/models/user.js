@@ -4,7 +4,9 @@ const uniqueValidator = require('mongoose-unique-validator')
 const userSchema = mongoose.Schema({
     username: {
         type: String,
-        unique: true
+        unique: true,
+        minlength: 3,
+        present: true
     },
     name: String,
     passwordHash: String,
@@ -23,11 +25,10 @@ userSchema.set('toJSON', {
         returnedObject.id = returnedObject._id.toString()
         delete returnedObject._id
         delete returnedObject.__v
-        // suodatetaan passwordHash eli salasanan tiiviste pois näkyviltä
         delete returnedObject.passwordHash
     }
 })
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('BlogUser', userSchema)
 
 module.exports = User

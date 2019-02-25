@@ -1,14 +1,16 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
-let dburl = process.env.DB_URL
+
 let PORT = process.env.PORT
+let MONGODB_URI = process.env.MONGODB_URI
 
 if (process.env.NODE_ENV === 'test') {
-    dburl = process.env.TEST_DB_URL
+    PORT = process.env.TEST_PORT
+    MONGODB_URI = process.env.TEST_MONGODB_URI
 }
 
 module.exports = {
-    dburl,
+    MONGODB_URI,
     PORT
 }
